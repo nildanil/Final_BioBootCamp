@@ -15,11 +15,11 @@ epitopes = drop_n(open('epitopes.fasta', 'r+').readlines()[1::2])
 num_of_aminoacids = ((len(epitopes) * 9) + (len(epitopes) * 5)) * 2 - 5 #Для лучшего уровня презентации мы решили продублировать эпитопы
 
 RES = list()
-for i in range(len(epitopes)):
+for i in range(len(epitopes)): #Заполнение первой части пептида
     RES.append(epitopes[i])
-    RES.append(choice(snippets))
+    RES.append(choice(snippets))#Выбираем рандомную вставку.Это можно сделать, так как ни одна связка не перекрывает эпитопы
 
-shuffle(epitopes)#чтобы пептид не получился зеркальным
+shuffle(epitopes)#чтобы пептид не получился зеркальным, делаем пермешку эпитопов
 
 for i in range(len(epitopes)):
     RES.append(epitopes[i])
